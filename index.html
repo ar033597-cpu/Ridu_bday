@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Happy Birthday Meri Pyari Ridu ❤️</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 20%, #2b0e35 0%, #0d0714 80%);
+      color: #f8f9fa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slider-container {
+      width: 100%;
+      max-width: 420px;
+      height: 88vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.96);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 10px;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 14px;
+      background: rgba(255, 77, 109, 0.2);
+      border: 1px solid #ff4d6d;
+      border-radius: 20px;
+      color: #ff8fa3;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    h1 {
+      font-size: 22px;
+      line-height: 1.3;
+      text-align: center;
+      color: #ff8fa3;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: #c9b6d8;
+      font-size: 13px;
+      line-height: 1.5;
+      text-align: center;
+      max-width: 320px;
+    }
+
+    /* Envelope */
+    .env-wrapper {
+      width: 190px;
+      height: 125px;
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.4);
+      margin: auto 0;
+    }
+
+    .heart-btn {
+      width: 50px;
+      height: 50px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    /* Cake Slide */
+    .cake-box {
+      margin: auto 0;
+      text-align: center;
+    }
+
+    .cake-art {
+      font-size: 65px;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .candle-flame {
+      position: absolute;
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 20px;
+      background: #ffb703;
+      border-radius: 50% 50% 35% 35%;
+      box-shadow: 0 0 12px #ffb703, 0 0 20px #ff7b00;
+    }
+
+    .candle-flame.blown {
+      display: none;
+    }
+
+    /* Photo Frame */
+    .photo-card {
+      background: #ffffff;
+      padding: 10px 10px 14px 10px;
+      border-radius: 8px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+      width: 100%;
+      max-width: 310px;
+      margin: auto 0;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 310px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      background-color: #2b0e35;
+    }
+
+    .caption {
+      color: #2b0e35;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+
+    /* Letter Box */
+    .letter-box {
+      background: #fffdfa;
+      color: #2d232e;
+      border-radius: 12px;
+      padding: 18px 16px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      border-left: 5px solid #ff4d6d;
+      width: 100%;
+      max-height: 65vh;
+      overflow-y: auto;
+      margin: auto 0;
+      text-align: left;
+    }
+
+    .letter-box h3 {
+      color: #8b0032;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .letter-box p {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: #443846;
+      margin-bottom: 8px;
+    }
+
+    .signature {
+      font-size: 15px;
+      color: #c9184a;
+      text-align: right;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    /* Bottom Control Bar */
+    .nav-bar {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 8px;
+    }
+
+    .btn {
+      padding: 10px 22px;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    .btn-next {
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+    }
+
+    .btn-prev {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+
+    .counter-text {
+      color: #c9b6d8;
+      font-size: 11px;
+      margin-top: 4px;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slider-container">
+
+    <!-- Slide 1: Welcome Cover -->
+    <div class="slide active" id="slide-0">
+      <div class="badge">✨ 12:00 AM Midnight Surprise ✨</div>
+      <h1>Happy Birthday, Meri Rida ❤️</h1>
+      <p class="subtitle">Aap door hokar bhi mere dil ke sabse kareeb hain. Meri Biwi Ji ke liye ek chota sa tohfa!</p>
+      
+      <div class="env-wrapper" onclick="goNext()">
+        <div class="heart-btn">💌</div>
+      </div>
+      
+      <p style="font-size: 12px; color: #c9b6d8;">Envelope par click karke dekhiye ➜</p>
+      <div class="nav-bar">
+        <button class="btn btn-next" onclick="goNext()">Surprise Kholein ➜</button>
+      </div>
+    </div>
+
+    <!-- Slide 2: Virtual Cake -->
+    <div class="slide" id="slide-1">
+      <div class="badge">🎂 Make A Wish 🎂</div>
+      <h2 style="font-size: 18px; color: #ff8fa3; text-align: center;">Virtual Cake Cutting</h2>
+      <p class="subtitle">Aankhein band karke ek pyari si wish maangiye aur candle bujhaiye!</p>
+      
+      <div class="cake-box">
+        <div class="cake-art">
+          <div id="flame" class="candle-flame"></div>
+          🎂
+        </div>
+        <div>
+          <button id="blowBtn" class="btn btn-next" onclick="blowCandle()">Candle Bujhayein 💨</button>
+        </div>
+      </div>
+
+      <div class="nav-bar">
+        <button class="btn btn-prev" onclick="goPrev()">⬅ Back</button>
+        <button class="btn btn-next" onclick="goNext()">Aage Badhein ➜</button>
+      </div>
+    </div>
+
+    <!-- Slide 3: Bachpan Photo -->
+    <div class="slide" id="slide-2">
+      <div class="badge">Memories • 1/5</div>
+      <div class="photo-card">
+        <img src="19782.jpg" alt="Nanhi Ridu" onerror="this.alt='Photo: 19782.jpg missing'">
+        <div class="caption">Nanhi Ridu! Yeh pyari si nath aur masoomiyat tab se lekar aaj tak mere dil me basi hai. 🌸</div>
+      </div>
+      <div class="nav-bar">
+        <button class="btn btn-prev" onclick="goPrev()">⬅ Back</button>
+        <button class="btn btn-next" onclick="goNext()">Next Photo ➜</button>
+      </div>
+    </div>
+
+    <!-- Slide 4: First Meet -->
+    <div class="slide" id="slide-3">
+      <div class="badge">Memories • 2/5</div>
+      <div class="photo-card">
+        <img src="19778.jpg" alt="First Meet" onerror="this.alt='Photo: 19778.jpg missing'">
+        <div class="caption">Jab aapne mere kandhe par sar rakha tha... Duniya ka sabse sukoon bhara lamha! ❤️</div>
+      </div>
+      <div class="nav-bar">
+        <button class="btn btn-prev" onclick="goPrev()">⬅ Back</button>
+        <button class="btn btn-next" onclick="goNext()">Next Photo ➜</button>
+      </div>
+    </div>
+
+    <!-- Slide 5: Smile Selfie -->
+    <div class="slide" id="slide-4">
+      <div class="badge">Memories • 3/5</div>
+      <div class="photo-card">
+        <img src="19780.jpg" alt="Smile" onerror="this.alt='Photo: 19780.jpg missing'">
+        <div class="caption">Aapki yeh khilti hui muskaan hi meri duniya ki sabse badi daulat hai. ✨</div>
+      </div>
+      <div class="nav-bar">
+        <button class="btn btn-prev" onclick="goPrev()">⬅ Back</button>
+        <button class="btn btn-next" onclick="goNext()">Next Photo ➜</button>
+      </div>
+    </div>
+
+    <!-- Slide 6: Cheek Pull -->
+    <div class="slide" id="slide-5">
+      <div class="badge">Memories • 4/5</div>
+      <div class="photo-card">
+        <img src="19781.jpg" alt="Cheek Pull" onerror="this.alt='Photo: 19781.jpg missing'">
+        <div class="caption">Aapke gol-gol gaal kheenchne ka haq sirf aur sirf mera hai, samjhi aap? 🙈</div>
+      </div>
+      <div class="nav-bar">
+        <button class="btn btn-prev" onclick="goPrev()">⬅ Back</button>
+        <button class="btn btn-next" onclick="goNext()">Next Photo ➜</button>
+      </div>
+    </div>
+
+    <!-- Slide 7: Goofy Face -->
+    <div class="slide" id="slide-6">
+      <div class="badge">Memories • 5/5</div>
+      <div class="photo-card">
+        <img src="19779.jpg" alt="Goofy" onerror="this.alt='Photo: 19779.jpg missing'">
+        <div class="caption">Aapki yeh natkhat aur goofy harkatein hi to meri jaan le leti hain! 😂❤️</div>
+      </div>
+      <div class="nav-bar">
+        <button class="btn btn-prev" onclick="goPrev()">⬅ Back</button>
+        <button class="btn btn-next" onclick="goNext()">Mera Letter Padhein ➜</button>
+      </div>
+    </div>
+
+    <!-- Slide 8: Love Letter -->
+    <div class="slide" id="slide-7">
+      <div class="badge">💌 From My Heart 💌</div>
+      <div class="letter-box">
+        <h3>Meri Pyari Ridu (Biwi Ji) ke Naam... ❤️</h3>
+        <p>Aap janti hain, chahe hum dono ke beech kitne bhi kilometers ka fasla ho, par jab bhi main aankhein band karta hoon to bas aapko hi apne paas mehsoos karta hoon.</p>
+        <p>Main hamesha aapko dil se apni biwi manta hoon. Aapki respect karna, aapki choti-choti baaton ka khayal rakhna, aur aapke har sapne me aapke sath khade rehna meri sabse badi khwahish hai.</p>
+        <p>Aapki yeh hansi, aapka bachpan, aapka ruthna aur phir manna—meri zindagi ka sabse khubsurat hissa hain. Dua hai ki aapka aane wala saal kamyabi, khushiyon aur dher saare pyaar se bhara ho.</p>
+        <p>Jald hi ye dooriyan khatam hongi aur hum sath milkar har birthday celebrate karenge. I love you so much, hamesha!</p>
+        <div class="signature">
+          Hamesha sirf aapka,<br>
+          Rashid ❤️
+        </div>
+      </div>
+      <div class="nav-bar">
+        <button class="btn btn-prev" onclick="goPrev()">⬅ Back</button>
+        <button class="btn btn-next" onclick="restart()">Shuru Se Dekhein 🔄</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="counter-text" id="counter">1 / 8</div>
+
+  <script>
+    var current = 0;
+    var total = 8;
+
+    function renderSlide() {
+      for (var i = 0; i < total; i++) {
+        var el = document.getElementById('slide-' + i);
+        if (el) {
+          if (i === current) {
+            el.classList.add('active');
+          } else {
+            el.classList.remove('active');
+          }
+        }
+      }
+      var cnt = document.getElementById('counter');
+      if (cnt) {
+        cnt.innerText = (current + 1) + ' / ' + total;
+      }
+    }
+
+    function goNext() {
+      if (current < total - 1) {
+        current++;
+        renderSlide();
+      }
+    }
+
+    function goPrev() {
+      if (current > 0) {
+        current--;
+        renderSlide();
+      }
+    }
+
+    function restart() {
+      current = 0;
+      renderSlide();
+    }
+
+    function blowCandle() {
+      var fl = document.getElementById('flame');
+      if (fl) fl.classList.add('blown');
+      var btn = document.getElementById('blowBtn');
+      if (btn) btn.innerText = 'Wish Granted! ✨❤️';
+    }
+  </script>
+</body>
+</html>
